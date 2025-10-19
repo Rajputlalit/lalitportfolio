@@ -50,7 +50,7 @@
 .image-wrapper {
   width: 100%;
   max-width: 400px;
-  background-color: #6E06F2 ;
+  /* background-color: #6E06F2 ; */
   aspect-ratio: 1/1; /* makes it square */
   border-radius: 50%;
   overflow: hidden;
