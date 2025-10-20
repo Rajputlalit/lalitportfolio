@@ -35,6 +35,40 @@
 .Landing .leftSide p{
     font-size: 1.5em;
 }
+/* Leftside buttons */
+/* --- BUTTON GROUP --- */
+.button-group {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+  border-radius: 50%;
+
+}
+
+.button-group button {
+  padding: 0.8rem 1.6rem;
+  border: none;
+  background: transparent;
+  color:#24262F;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-group button:hover {
+  background: #6E06F2;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.button-group button.active {
+  background: #6E06F2;
+  color: #fff;
+}
+
+/* Leftside buttons */
 .Landing .rightSide{
     width: 450px;
     height: 450px;
@@ -75,37 +109,3 @@
   border-radius: 100% ease;
 }
 
-/* Leftside buttons */
-/* --- BUTTON GROUP --- */
-.button-group {
-  display: flex;
-  gap: 1.2rem;
-  margin-top: 1.5rem;
-  border-radius: 50%;
-
-}
-
-.button-group button {
-  padding: 0.8rem 1.6rem;
-  border: none;
-  background: transparent;
-  color:#24262F;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.button-group button:hover {
-  background: #6E06F2;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-.button-group button.active {
-  background: #6E06F2;
-  color: #fff;
-}
-
-/* Leftside buttons */
