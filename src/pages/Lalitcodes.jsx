@@ -1,27 +1,53 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import "./Lalitcodes.css";
-
-// ✅ Import all images dynamically from a folder
-const imageImports = import.meta.glob("../assets/pics/*.{png,jpg,jpeg}", {
-  eager: true,
-});
-const slideshowImages = Object.values(imageImports).map((img) => img.default);
+import myphoto from "../assets/png/png/Lalit.png";
 
 function Lalitcodes() {
   const [activeButton, setActiveButton] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0); // slideshow index
+  const [text, setText] = useState(""); // 🔤 Current text being typed
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopIndex, setLoopIndex] = useState(0); // 🔁 Which text we're on
   const navigate = useNavigate();
 
-  // ✅ Slideshow auto-play logic
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slideshowImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // ✨ All phrases (supports HTML tags!)
+  const phrases = [
+    "<span>Front</span>end<br>Developer",
+    "Web<span class='violet'><br>Designer</span>",
+    "<span class='violet'style='color:#6E06F2'>Reactjs</span> Developer",
+    "Let's<br><span class='violet'>explore</span>",
+    "Lalit<span class='violet'>codes.</span>",
+  ];
 
+  // ✨ Typewriter core logic
+  useEffect(() => {
+    const current = phrases[loopIndex % phrases.length];
+    const speed = isDeleting ? 50 : 60; // faster when deleting
+
+    const timeout = setTimeout(() => {
+      const updatedText = isDeleting
+        ? current.substring(0, text.length - 1)
+        : current.substring(0, text.length + 1);
+
+      setText(updatedText);
+
+      // If done typing
+      if (!isDeleting && updatedText === current) {
+        setTimeout(() => setIsDeleting(true), 1000); // pause before deleting
+      }
+      // If done deleting
+      else if (isDeleting && updatedText === "") {
+        setIsDeleting(false);
+        setLoopIndex(loopIndex + 1); // move to next word
+      }
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, loopIndex]);
+
+  // ✅ Button click handlers
   const handleLinkedInClick = () => {
     setActiveButton("linkedin");
     window.open("https://www.linkedin.com/in/lalit-rajput-950220216", "_blank");
@@ -44,9 +70,16 @@ function Lalitcodes() {
           Hey I'm <strong>Lalit</strong>{" "}
           <span className="waving-hand">&#128075;</span>
         </p>
-        <h2>
-          <span>Front</span>end Developer
+
+        {/* ✨ Typewriter Effect Section */}
+        <h2 id="animated">
+          <span
+            id="typewriter"
+            dangerouslySetInnerHTML={{ __html: text }}
+          ></span>
+          <span className="cursor">|</span>
         </h2>
+
         <p>
           I'm a frontend developer based in Hisar. I'll help you build beautiful
           websites your users will love.
@@ -68,7 +101,7 @@ function Lalitcodes() {
             className={activeButton === "github" ? "active" : ""}
             onClick={handleGithubClick}
           >
-            💻 GitHub
+          <FaGithub/> GitHub
           </button>
           <button
             className={activeButton === "projects" ? "active" : ""}
@@ -79,18 +112,9 @@ function Lalitcodes() {
         </div>
       </div>
 
-      {/* ✅ Slideshow goes here */}
       <div className="rightSide">
-        <div className="slideshow">
-          {slideshowImages.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`Slide ${index + 1}`}
-              className={index === currentIndex ? "slide active" : "slide"}
-            />
-          ))}
-        </div>
+        <div className="image-wrapper">
+<img src={myphoto} alt="Lalit - ReactJS Developer" />        </div>
       </div>
     </section>
   );

@@ -1,54 +1,59 @@
-/* ======== Landing Section ======== */
-.Landing {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10%;
-  /* padding: 0 5vw; */
+.Landing{
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    gap: 10vw;   
 }
-
-/* ======== Left Side ======== */
-.Landing .leftSide {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 5vh;
+.Landing .leftSide{
+    width: 50%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items:flex-start; */
+    gap: 2rem;
+    padding: 0.1em;
+    margin-bottom: 5vh;
+    /* background-color: yellowgreen; */
 }
-
-.Landing .leftSide p {
-  font-size: 1.4rem;
-  color: #24262f;
-  /* line-height: -0.5vh; */
+.Landing .leftSide p{
+    font-size: 0.1em;
+    color:#24262F;
 }
-
-.Landing .leftSide h2 {
-  font-size: 7rem;
-  color: #24262f;
-  line-height: 13vh;
-  font-weight: 900;
+.Landing .leftSide h2{
+    font-size: 8rem;
+    color: #24262F;
+    line-height: 11vh;
+    /* line-height: 0.8em; */
+    font-weight: 900;
+    /* letter-spacing: 0vw; */
 }
-
-.Landing .leftSide h2 span {
-  color: #6e06f2;
+.Landing .leftSide h2 span{
+    color: #6E06F2;
 }
-
-/* ======== Buttons ======== */
+.Landing .leftSide p{
+    font-size: 1.5em;
+}
+/* Leftside buttons */
+/* --- BUTTON GROUP --- */
 .button-group {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  justify-content: left;
   gap: 2rem;
+  /* background-color: yellow; */
+  /* margin-top: 1.5rem; */
+  /* border-radius: 50%; */
+
 }
 
 .button-group button {
-  padding: 0.8rem 1.6rem;
-  border: 2px solid #6e06f2;
+  padding: 0.8rem;
+  border: 1px solid #24262F;
   background: transparent;
-  color: #6e06f2;
+  color:#24262F;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 8px;
@@ -57,93 +62,90 @@
 }
 
 .button-group button:hover {
-  background: #6e06f2;
+  background: #6E06F2;
   color: #fff;
   transform: translateY(-2px);
 }
 
-.button-group button.active {
-  color: #24262f;
-}
+/* Leftside buttons */
 
-/* ======== Right Side ======== */
-.Landing .rightSide {
-  width: 450px;
-  height: 450px;
-  border: 1px solid #24262f;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 6vh; */
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  /* background: transparent; */
+.Landing .rightSide{
+    width: 450px;
+    height: 450px;
+    border: 1px #24262F solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12vh;
+    
+    /* background-color: blueviolet;    */
 }
-
-/* ======== Slideshow Styles ======== */
-.slideshow {
-  position: relative;
+.image-wrapper {
   width: 100%;
-  height: 100%;
+  max-width: 400px;
+  /* background-color: #6E06F2 ; */
+  aspect-ratio: 1/1; /* makes it square */
   border-radius: 50%;
   overflow: hidden;
+  /* box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2); */
+  transition: transform 0.4s ease;
+  border: 30px solid #24262F;
+  border-width: 1px;
+  
+  /* background-color: #6E06F2; */
+  
 }
 
-.slideshow img {
-  position: absolute;
-  inset: 0;
+.image-wrapper img {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   object-fit: cover;
   object-position: center top;
-  opacity: 0;
-  filter: grayscale(0%);
-  transition: opacity 1s ease-in-out, filter 0.5s ease-in-out, transform 1s ease;
+  filter:grayscale();
+}
+.image-wrapper img:hover{
+      filter: none;
+      transition: 1s ease;
+
 }
 
-.slideshow img.active {
-  opacity: 1;
-  transform: scale(1.03);
-}
-
-.slideshow img:hover {
-  filter: none;
-  transition: 1s ease;
-}
-
-/* ======== Hover Effects ======== */
-.slideshow:hover img.active {
+.image-wrapper:hover {
   transform: scale(1.05);
+  border-radius: 100% ease;
 }
 
-/* ======== Responsive Design ======== */
-@media (max-width: 1024px) {
-  .Landing {
-    flex-direction: column;
-    height: auto;
-    padding: 4rem 2rem;
-    gap: 4rem;
-  }
+/* ✨ Typewriter Effect */
+#animated {
+  font-size: 6rem;
+  position: relative;
+  display: inline-block;
+  line-height: 12vh;
+  min-height: 0.1em;
+}
 
-  .Landing .leftSide,
-  .Landing .rightSide {
-    width: 100%;
-    text-align: center;
-    align-items: center;
-  }
+#typewriter {
+  color: #24262F;
+  font-weight: bold;
+}
 
-  .Landing .leftSide h2 {
-    font-size: 3.5rem;
-  }
+#typewriter .violet {
+  color: #6E06F2;
+}
 
-  .button-group {
-    justify-content: center;
-  }
+.cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink 1s steps(1) infinite;
+  color: #6E06F2;
+  font-weight: bold;
+}
 
-  .Landing .rightSide {
-    width: 300px;
-    height: 300px;
-    margin-top: 2rem;
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
   }
 }
