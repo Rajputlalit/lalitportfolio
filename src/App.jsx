@@ -9,7 +9,6 @@ import GetinTouch from "./pages/GetinTouch.jsx";
 import './App.css'
 import Header from "./components/Header/Header.jsx";
 import Lalitcodes from './pages/Lalitcodes.jsx';
-// import Skills from './pages/Skills.jsx';
 function App() {
 
   return (

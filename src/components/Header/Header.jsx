@@ -10,7 +10,7 @@ function Header() {
       <h1><NavLink to = "/" end>Lalitcodes.</NavLink></h1>
       <Navbar/>
       <NavLink to = "/getintouch" >
-    <span class ="material-symbols-outlined">
+    <span class="material-symbols-outlined">
       identity_platform
     </span>
       </NavLink>
